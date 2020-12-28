@@ -1,5 +1,26 @@
+function loadBodyContent () {
+	loadContent('index');
+}
+
+function removeElementExcept(id) {
+	var bodyIdArr = ['index', 'aboutme', 'blog', 'contact']
+	bodyIdArr.forEach(idBody => {
+		if (idBody !== id) {
+      var element = document.getElementById(idBody);
+      if (element !== null) {
+        element.parentNode.removeChild(element);
+      }
+		}
+	})
+}
+
+function loadContent(id) {
+  // removeElementExcept(id);
+  document.querySelector("#colorlib-main").innerHTML = `<div w3-include-html="content_${id}.html"></div>`
+}
+
+// in order to include another html
 function includeHTML() {
-  console.log("hello")
   var z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
   z = document.getElementsByTagName("*");
